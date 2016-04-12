@@ -1,0 +1,6 @@
+@font-face {
+    font-family: "RobotoMedium";
+    font-weight: 500;
+    font-style: normal;
+    src: local('RobotoMedium'), url("../fonts/RobotoMedium.ttf") format("ttf");
+}
