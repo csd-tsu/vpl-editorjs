@@ -2,168 +2,184 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Prototype with draggable objects</title>
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/jquery-ui.structure.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/jquery-ui.theme.min.css" type="text/css" />
+	<meta charset="utf-8">
+	<title>Prototype with draggable objects</title>
+	<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
+	<link rel="stylesheet" href="css/jquery-ui.structure.min.css" type="text/css" />
+	<link rel="stylesheet" href="css/jquery-ui.theme.min.css" type="text/css" />
 
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/normalize.css" type="text/css" />
-    <!-- <link rel="stylesheet" href="css/fonts.css" type="text/css" /> -->
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/normalize.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="css/fonts.css" type="text/css" /> -->
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<link rel="stylesheet" href="css/spectrum.css" media="screen" title="no title" charset="utf-8">
 </head>
 
 <body>
 
-    <div class="left-panel">
+	<div class="left-panel">
 
-        <div class="prop">
-            <div class="panel-title">Объекты</div>
-            <ul class="objects">
-                <li class="btn-block" data-type="Block">Блок</li>
-                <li class="btn-ellipse" data-type="Ellipse">Эллипс</li>
-                <li class="btn-plane" data-type="Plane">Наклонная плоскость</li>
-                <li class="btn-circle" data-type="Сircle">Кольцо</li>
-            </ul>
-        </div>
+		<div class="prop">
+			<div class="panel-title">Объекты</div>
+			<ul class="objects block-types">
+				<li object="block">Блок</li>
+				<li object="block">Эллипс</li>
+				<li object="block">Наклонная плоскость</li>
+				<li object="circle">Круг</li>
+			</ul>
+		</div>
 
-        <div class="prop">
-            <div class="panel-title">Связи</div>
-            <ul class="objects">
-                <li class="show">Нить</li>
-                <li>Стержень</li>
-                <li>Пружина</li>
-                <li>Ось</li>
-            </ul>
-        </div>
-        <div class="prop">
-            <div class="panel-title">Якоря</div>
-            <ul class="objects">
-                <li>Сила</li>
-                <li>Момент силы</li>
-                <li>Стоп-якорь</li>
-            </ul>
-        </div>
-    </div>
+		<div class="prop">
+			<div class="panel-title">Связи</div>
+			<ul class="objects">
+				<li class="show">Нить</li>
+				<li>Стержень</li>
+				<li>Пружина</li>
+				<li>Ось</li>
+			</ul>
+		</div>
+		<div class="prop">
+			<div class="panel-title">Якоря</div>
+			<ul class="objects">
+				<li>Сила</li>
+				<li>Момент силы</li>
+				<li>Стоп-якорь</li>
+			</ul>
+		</div>
+	</div>
 
-    <div class="top-panel">
-        <span class="ui-icon ui-icon-trash top-panel-block btn-clear">
+	<div class="top-panel">
+		<span class="ui-icon ui-icon-trash top-panel-block btn-clear">
         </span>
-        <span class="ui-icon ui-icon-arrowreturnthick-1-w top-panel-block btn-clear">
+		<span class="ui-icon ui-icon-arrowreturnthick-1-w top-panel-block btn-back">
         </span>
-        <span class="ui-icon  ui-icon-arrowreturnthick-1-e top-panel-block btn-clear">
+		<span class="ui-icon  ui-icon-arrowreturnthick-1-e top-panel-block btn-forward">
         </span>
-    </div>
+	</div>
+
+	<div class="canvas-container">
+		<canvas id="canvas" class="lower-canvas"></canvas>
+	</div>
+
+	<div class="right-panel">
+		<div class="right-panel-info">
+			<div class="prop">
+				<p>
+					<ul class="objects">
+						<li class="render-animation">Применить сцену</li>
+						<li class="clear-scene">Очистить сцену</li>
+					</ul>
+				</p>
+			</div>
+		</div>
+
+		<div class="right-panel-props">
+			<div class="prop-container-scene">
+				<div class="prop">
+					<div class="panel-title">Cвойства сцены:</div>
+					<div class="prop-item scene-duration">
+						<label class="prop-title">
+							<span>Длительность:</span>
+							<input type="text" class="prop-input" readonly>
+						</label>
+						<div class="slider"></div>
+					</div>
+					<div class="prop-item scene-interval">
+						<label class="prop-title ">
+							<span>Интервал:</span>
+							<input type="text" class="prop-input" readonly>
+						</label>
+						<div class="slider"></div>
+					</div>
+					<div class="prop-item scene-gravity">
+						<label class="prop-title ">
+							<span>Гравитация:</span>
+							<input type="text" class="prop-input" readonly>
+						</label>
+						<div class="slider"></div>
+					</div>
+				</div>
 
 
-    <div class="canvas-container">
-        <canvas id="canvas" class="lower-canvas"></canvas>
-    </div>
 
-    <div class="right-panel">
+			</div>
 
+			<div class="prop-container prop-container-block">
+				<div class="prop">
+					<div class="panel-title">Cвойства объекта блок:</div>
 
+					<span class="prop-title">Координаты: </span>
+					<label class="prop-title">x:
+						<input type="text">
+					</label>
+					<label class="prop-title">y:
+						<input type="text">
+					</label>
+				</div>
+			</div>
 
-        <div class="right-panel-info">
-<div class="prop">
-                    <p class="prop-title">Адрес бэкенда</p>
-            <input style="width:200px;"  tabindex="1" value="http://localhost:8081/" />
+			<div class="prop-container prop-container-ellipse">
+				<div class="prop">
+					<div class="panel-title">Cвойства объекта эллипс:</div>
 
-          <p>
-              <ul class="objects">
-            <li>Применить сцену</li>
-            <li>Сохранить сцену</li>
-            <li>Загрузить сцену</li>
-    </ul>
-          </p>
-        </div>
-        </div>
-
-        <div class="right-panel-props">
-
-            <div class="prop-container-scene">
-                <div class="prop">
-                    <div class="panel-title">Cвойства сцены:</div>
-                    <label for="amount" class="prop-title">Эластичность:
-                        <input type="text" id="amount" class="prop-input" readonly>
-                    </label>
-                    <div class="slider"></div>
-
-                </div>
-
-                <div class="prop">
-                    <div class="demo">
-                        <form action="#">
-                            <fieldset>
-                                <label for="speed"  class="prop-title">Гравитация:</label>
-                                <select name="speed" id="speed">
-                                    <option>0</option>
-                                    <option selected="selected">1</option>
-                                </select>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="prop-container prop-container-block">
-                <div class="prop">
-                    <div class="panel-title">Cвойства объекта блок:</div>
-
-                    <span class="prop-title">Координаты: </span>
-                    <label class="prop-title">x:
-                        <input type="text">
-                    </label>
-                    <label class="prop-title">y:
-                        <input type="text">
-                    </label>
-                </div>
-            </div>
-
-            <div class="prop-container prop-container-ellipse">
-                <div class="prop">
-                    <div class="panel-title">Cвойства объекта эллипс:</div>
-
-                </div>
-            </div>
+				</div>
+			</div>
 
 
-            <div class="prop-container prop-container-plane">
-                <div class="prop">
-                    <div class="panel-title">Cвойства объекта плоскость:</div>
+			<div class="prop-container prop-container-plane">
+				<div class="prop">
+					<div class="panel-title">Cвойства объекта плоскость:</div>
 
-                </div>
-            </div>
+				</div>
+			</div>
 
-            <div class="prop-container prop-container-cirlce">
-                <div class="prop">
-                    <div class="panel-title">Cвойства объекта кольцо:</div>
+			<div class="prop-container circle-props">
+				<div class="prop">
+					<div class="panel-title">Cвойства круга:</div>
+					<div class="prop-item circle-mass">
+						<label class="prop-title ">
+							<span>Масса:</span>
+							<input type="text" class="prop-input">
+						</label>
+					</div>
+					<div class="prop-item circle-color">
+						<label class="prop-title ">
+							<span>Цвет:</span>
+							<input type="text" class="">
+						</label>
+					</div>
+					<div class="prop-item circle-radius">
+						<label class="prop-title">
+							<span>Радиус:</span>
+							<input type="text" class="prop-input" readonly>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="bottom-panel">
+		<div class="bottom-controls-slider">
+			<div class="bottom-controls-progress">
+			</div>
+		</div>
+		<div class="bottom-controls-buttons">
+			<div class="bottom-controls-play"></div>
+			<div class="bottom-controls-stop"></div>
+			<div class="bottom-controls-prev"></div>
+			<div class="bottom-controls-next"></div>
+		</div>
+	</div>
 
-    <div class="bottom-panel">
-        <div class="bottom-controls-slider">
-            <div class="bottom-controls-progress">
-            </div>
-        </div>
-        <div class="bottom-controls-buttons">
-            <div class="bottom-controls-play"></div>
-            <div class="bottom-controls-stop"></div>
-            <div class="bottom-controls-prev"></div>
-            <div class="bottom-controls-next"></div>
-        </div>
-    </div>
-
-    <script src="js/fabric.min.js" charset="utf-8"></script>
-    <script src="js/jquery-1.11.3.min.js" charset="utf-8"></script>
-    <script src="js/jquery-ui.min.js" charset="utf-8"></script>
-    <script src="js/canvas.js" charset="utf-8"></script>
-    <script src="js/main.js" charset="utf-8"></script>
-    <script src="js/properties.js" charset="utf-8"></script>
+	<script src="js/fabric.min.js" charset="utf-8"></script>
+	<script src="js/jquery-1.11.3.min.js" charset="utf-8"></script>
+	<script src="js/jquery-ui.min.js" charset="utf-8"></script>
+	<script src="js/spectrum.js" charset="utf-8"></script>
+	<script src="js/canvas.js" charset="utf-8"></script>
+	<script src="js/main.js" charset="utf-8"></script>
+	<script src="js/properties.js" charset="utf-8"></script>
+	<script src="js/player.js" charset="utf-8"></script>
 
 </body>
 
