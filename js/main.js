@@ -105,13 +105,11 @@ jQuery(document).ready(function($) {
         },
         width: "50%",
         maxWidth: "768px",
-        title: "График y(x)"
+
+        title: "График"
     });
 });
 
 function PlotPopUpShow(){
 	$("#plot-popup").dialog('open');
-
 }
-
-
