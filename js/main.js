@@ -18,7 +18,7 @@ var editor = {
 			k: 55,
             c_recovery: parseFloat($(".scene-c-recovery input").val()),
 			entities: [],
-		}
+		};
 		$.each(entities, function( index, value ) {
 			var obj = {
 				x: parseInt(value['object'].left),
@@ -29,7 +29,7 @@ var editor = {
 				vy: (canvas.height - parseInt(value['vectorPoint'].top+10)) - (canvas.height -parseInt(value['object'].top+value['object'].radius*value['object'].scaleX)),
 				color: value['object'].fill,
 				m: value['object'].m
-			}
+			};
 			console.log(obj.vy);
 			data.entities.push(obj);
 		});
@@ -49,7 +49,7 @@ var editor = {
 		});
 
 	}
-}
+};
 
 jQuery(document).ready(function($) {
     $(".block-types li").click(function(event) {
@@ -94,4 +94,24 @@ jQuery(document).ready(function($) {
 		player.status="stop";
 		player.setFrame(frame);
 	});
+
+	$(".plot-popup").dialog({
+        autoOpen: false,
+        modal: true,
+        open: function(){
+            jQuery('.ui-widget-overlay').bind('click',function(){
+               dialogopen.dialog('close');
+            });
+        },
+        width: "50%",
+        maxWidth: "768px",
+        title: "График y(x)"
+    });
 });
+
+function PlotPopUpShow(){
+	$("#plot-popup").dialog('open');
+
+}
+
+

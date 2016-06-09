@@ -13,6 +13,17 @@
 	<!-- <link rel="stylesheet" href="css/fonts.css" type="text/css" /> -->
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<link rel="stylesheet" href="css/spectrum.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/plot-popup.css" type="text/css">
+    <script src="js/jquery-1.11.3.min.js" charset="utf-8"></script>
+    <script src="js/fabric.min.js" charset="utf-8"></script>
+	<script src="js/jquery-ui.min.js" charset="utf-8"></script>
+	<script src="js/spectrum.js" charset="utf-8"></script>
+	<script src="js/canvas.js" charset="utf-8"></script>
+	<script src="js/main.js" charset="utf-8"></script>
+	<script src="js/properties.js" charset="utf-8"></script>
+	<script src="js/player.js" charset="utf-8"></script>
+    <script src="js/jquery.flot.js" charset="utf-8"></script>
+
 </head>
 
 <body>
@@ -68,6 +79,13 @@
 					<ul class="objects">
 						<li class="render-animation">Применить сцену</li>
 						<li class="clear-scene">Очистить сцену</li>
+					</ul>
+				</p>
+			</div>
+			<div class="prop">
+				<p>
+					<ul class="objects">
+						<li class="show-plot" onclick="PlotPopUpShow()">Построить график</li>
 					</ul>
 				</p>
 			</div>
@@ -181,16 +199,65 @@
 			<div class="bottom-controls-next"></div>
 		</div>
 	</div>
+<div class="plot-popup" id="plot-popup" >
+    <p><noscript><strong style="color: red;">
+    Для отображения данных необходимо включить JavaScript!
+          </strong></noscript></p>
+          <!-- тут будет выводится график -->
+          <div id="placeholder" class="plot-popup-content" style="width:600px;height:300px;"></div>
 
-	<script src="js/fabric.min.js" charset="utf-8"></script>
-	<script src="js/jquery-1.11.3.min.js" charset="utf-8"></script>
-	<script src="js/jquery-ui.min.js" charset="utf-8"></script>
-	<script src="js/spectrum.js" charset="utf-8"></script>
-	<script src="js/canvas.js" charset="utf-8"></script>
-	<script src="js/main.js" charset="utf-8"></script>
-	<script src="js/properties.js" charset="utf-8"></script>
-	<script src="js/player.js" charset="utf-8"></script>
+        <script language="javascript" type="text/javascript">
+        // данные для графиков
+        var Plot = function() {
+            var all_data = [{}];
 
+            $.each(player.entities, function (index, entity) {
+                all_data[0]['data'+index]=[];
+                $.each(player.frames, function (i, frame) {
+                    all_data[0]['data'+index].push([frame[index].x, frame[index].y])
+                })
+            });
+
+            var dataset = [
+                {
+                    label: "Шарик 1",
+                    data: all_data[0]['data0'],
+                    yaxis: 1,
+                    color: "#FF0000",
+                    points: { symbol: "circle", fillColor: "#FF0000"},
+                    lines: { show: true }
+                }, {
+                    label: "Шарик 2",
+                    data: all_data[0]['data1'],
+                    yaxis: 1,
+                    color: "#0062FF",
+                    points: { symbol: "triangle", fillColor: "#0062FF" },
+                    lines: {show:true}
+                }
+            ];
+            // свойства графика
+            var plot_conf = {
+                series: {
+                    lines: {
+                        show: true,
+                        lineWidth: 2
+                    }
+                },
+                xaxis:{
+                    tickSize:300
+                },
+                yaxis:{
+                    tickSize:300
+                }
+
+            };
+            // выводим график
+            $.plot($("#placeholder"), dataset, plot_conf);
+        }
+
+        </script>
+        <button onclick="Plot()">go</button>
+</div>
 </body>
 
 </html>
