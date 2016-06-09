@@ -14,9 +14,9 @@ var editor = {
 			gravity: parseInt($(".scene-gravity input").val()),
 			duration: parseFloat($(".scene-duration input").val()),
 			interval: parseFloat($(".scene-interval input").val()),
-			c_friction: 0.2,
+			c_friction: parseFloat($(".scene-c-friction input").val()),
 			k: 55,
-			c_recovery: 1,
+			c_recovery: parseFloat($(".scene-c-recovery input").val()),
 			entities: [],
 		}
 		$.each(entities, function( index, value ) {
