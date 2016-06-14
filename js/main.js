@@ -36,10 +36,10 @@ var editor = {
 		console.log(data);
 
 		$.ajax({
-			url: 'http://lookatmy.site/python/',
+			url: 'http://127.0.0.1:8080/oklimenko/collision',
 			type: 'post',
 			dataType: "json",
-			data: {data: JSON.stringify(data)}
+			data: JSON.stringify(data)
 		})
 		.done(function(result) {
 			player.init(result);
