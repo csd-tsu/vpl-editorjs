@@ -222,7 +222,7 @@ html, body {
     font-weight: 500;
 }
 .prop-input {
-    style=border: 0;
+    border: 0;
     color: #1565C0;
     font-weight: 500;
     font-size: 23px;

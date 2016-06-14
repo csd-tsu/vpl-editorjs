@@ -33,6 +33,27 @@ jQuery(document).ready(function($) {
         }
     });
 
+    $(".scene-c-recovery input").val(1);
+    $(".scene-c-recovery .slider").slider({
+        value: 1,
+        min: 0,
+        max: 1,
+        step: 0.1,
+        slide: function(event, ui) {
+            $(".scene-c-recovery input").val(ui.value);
+        }
+    });
+
+    $(".scene-c-friction input").val(0);
+    $(".scene-c-friction .slider").slider({
+        value: 1,
+        min: 0,
+        max: 1,
+        step: 0.1,
+        slide: function(event, ui) {
+            $(".scene-c-friction input").val(ui.value);
+        }
+    });
 
 	$(".circle-mass input").keyup(function(event) {
 		var index = $(".circle-props").attr('entity-id');

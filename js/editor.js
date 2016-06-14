@@ -14,11 +14,11 @@ var editor = {
 			gravity: parseInt($(".scene-gravity input").val()),
 			duration: parseFloat($(".scene-duration input").val()),
 			interval: parseFloat($(".scene-interval input").val()),
-			c_friction: 0.2,
+			c_friction: parseFloat($(".scene-c-friction input").val()),
 			k: 55,
-			c_recovery: 1,
-			entities: [],
-		}
+			c_recovery: parseFloat($(".scene-c-recovery input").val()),
+			entities: []
+		};
 		$.each(entities, function( index, value ) {
 			var obj = {
 				x: parseInt(value['object'].left),
@@ -29,7 +29,7 @@ var editor = {
 				vy: (canvas.height - parseInt(value['vectorPoint'].top+10)) - (canvas.height -parseInt(value['object'].top+value['object'].radius*value['object'].scaleX)),
 				color: value['object'].fill,
 				m: value['object'].m
-			}
+			};
 			console.log(obj.vy);
 			data.entities.push(obj);
 		});
@@ -49,4 +49,4 @@ var editor = {
 		});
 
 	}
-}
+};
