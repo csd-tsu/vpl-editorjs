@@ -100,6 +100,7 @@
 						<label class="prop-title">
 							<span>Длительность:</span>
 							<input type="text" class="prop-input" readonly>
+							<span>c</span>
 						</label>
 						<div class="slider"></div>
 					</div>
@@ -107,6 +108,7 @@
 						<label class="prop-title ">
 							<span>Интервал:</span>
 							<input type="text" class="prop-input" readonly>
+							<span>c</span>
 						</label>
 						<div class="slider"></div>
 					</div>
@@ -169,6 +171,7 @@
 						<label class="prop-title ">
 							<span>Масса:</span>
 							<input type="text" class="prop-input">
+							<span>кг</span>
 						</label>
 					</div>
 					<div class="prop-item circle-color">
@@ -181,6 +184,7 @@
 						<label class="prop-title">
 							<span>Радиус:</span>
 							<input type="text" class="prop-input" readonly>
+							<span>м</span>
 						</label>
 					</div>
 				</div>
@@ -207,12 +211,12 @@
     <!-- тут будет выводится график -->
     <div id="placeholder" class="plot-popup-content" style="width:600px;height:300px;"></div>
     <div class="bottom-popup">
-        <select class="graph-measures">
+        <select class="graph-measures" id="graph-select-function">
             <option value="">---</option>
-            <option value="coordinate">y(x)</option>
-            <option value="velocity">v(t)</option>
-            <option value="impulse">p(t)</option>
-        </select>
+        </select>(
+		<select class="graph-measures" id="graph-select-argument">
+            <option value="">---</option>
+        </select>)
         <button onclick="Plot()">Построить</button>
     </div>
 </div>

@@ -30,7 +30,7 @@ var field = {
             id: id,
             radius: 10,
             fill: 'rgba(0,0,0, 1)',
-            left: x+150,
+            left: x-10,
             top: y-10,
 			hasRotatingPoint: false,
         });
@@ -51,7 +51,7 @@ var field = {
 			canvas.renderAll();
         });
 
-		var vectorLine = new fabric.Line([x-2,y-2,x+158,y-2], {
+		var vectorLine = new fabric.Line([x,y,x,y], {
 			fill: 'red',
 			stroke: 'red',
 			strokeWidth: 4,

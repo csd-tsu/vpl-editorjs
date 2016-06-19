@@ -22,12 +22,12 @@ jQuery(document).ready(function($) {
         }
     });
 
-	$(".scene-interval input").val(0.2);
+	$(".scene-interval input").val(0.01);
     $(".scene-interval .slider").slider({
-        value: 0.2,
-        min: 0.1,
-        max: 2,
-        step: 0.1,
+        value: 0.01,
+        min: 0.01,
+        max: 1,
+        step: 0.01,
         slide: function(event, ui) {
             $(".scene-interval input").val(ui.value);
         }

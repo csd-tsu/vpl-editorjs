@@ -17,9 +17,10 @@ var editor = {
 			c_friction: parseFloat($(".scene-c-friction input").val()),
 			k: 55,
             c_recovery: parseFloat($(".scene-c-recovery input").val()),
-			entities: [],
+			entities: []
 		};
 		$.each(entities, function( index, value ) {
+
 			var obj = {
 				x: parseInt(value['object'].left),
 				y: canvas.height - parseInt(value['object'].top),
@@ -43,10 +44,25 @@ var editor = {
 		})
 		.done(function(result) {
 			player.init(result);
+            $('#graph-select-function')
+                .empty()
+                .append('<option selected="selected" value="">---</option>')
+                .append('<option value="interval">t</option>');
+            $('#graph-select-argument')
+                .empty()
+                .append('<option selected="selected" value="">---</option>')
+                .append('<option value="interval">t</option>');
+            $.each(result['entities'][0], function(key, value) {
+                if (key != 'm' && key != 'color' && key != 'type' && key != 'r'){
+                    $('#graph-select-function').append($('<option>').text(key).attr('value', key));
+                    $('#graph-select-argument').append($('<option>').text(key).attr('value', key));
+                }
+            });
 		})
 		.fail(function(result) {
 			console.log(result);
 		});
+        
 
 	}
 };
