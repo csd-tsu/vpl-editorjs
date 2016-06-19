@@ -52,7 +52,8 @@ var editor = {
                 .empty()
                 .append('<option selected="selected" value="">---</option>')
                 .append('<option value="interval">t</option>');
-            $.each(result['entities'][0], function(key, value) {
+            // get keys for first frame of the first entity
+            $.each(result['frames'][0][0], function(key, value) {
                 if (key != 'm' && key != 'color' && key != 'type' && key != 'r'){
                     $('#graph-select-function').append($('<option>').text(key).attr('value', key));
                     $('#graph-select-argument').append($('<option>').text(key).attr('value', key));
@@ -62,8 +63,6 @@ var editor = {
 		.fail(function(result) {
 			console.log(result);
 		});
-        
-
 	}
 };
 
@@ -86,6 +85,8 @@ jQuery(document).ready(function($) {
 	$(".clear-scene").click(function(event) {
 		canvas.clear();
 		entities = {};
+        $('#graph1-canvas').empty();
+        $('#graph2-canvas').empty();
 	});
 
 	$(".bottom-controls-play").click(function(event) {
@@ -124,6 +125,11 @@ jQuery(document).ready(function($) {
 
         title: "График"
     });
+    $( ".left-panel" ).tabs({
+        collapsible: true,
+        active: false
+    });
+
 });
 
 function PlotPopUpShow(){

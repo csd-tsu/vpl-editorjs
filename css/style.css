@@ -265,3 +265,33 @@ select {
 .full-spectrum .sp-palette {
 max-width: 200px;
 }
+.bottom-graphs{
+    text-align: center;
+    margin-top: 10px;
+}
+.bottom-graphs select{
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: 29px;
+    padding: 5px; /* If you add too much padding here, the options won't show in IE */
+    width: 50px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #c5c5c5;
+}
+.bottom-graphs button{
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: 29px;
+    padding: 5px; /* If you add too much padding here, the options won't show in IE */
+    width: 168px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #3b8ec2;
+    color: white;
+    margin-top: 10px;
+}

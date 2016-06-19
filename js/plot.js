@@ -1,4 +1,4 @@
-var Plot = function() {
+var setData = function (entity_number) {
     var all_data = [{}];
     var function_measure = $("#graph-select-function").val();
     var argument_measure = $("#graph-select-argument").val();
@@ -23,17 +23,22 @@ var Plot = function() {
         })
     });
 
-    var dataset = [
+    return [
         {
-            label: "Шарик 1",
-            data: all_data[0]['data0'],
-            yaxis: 1,
+            label: "Шарик " + entity_number,
+            data: all_data[0]['data' + entity_number],
+            yaxis: {ticks: []},
+            xaxis: {ticks: []},
             color: "#FF0000",
             points: { symbol: "circle", fillColor: "#FF0000"},
             lines: { show: true }
         }
     ];
-    // свойства графика
+};
+
+
+var PlotForTwoObjects = function () {
+   // свойства графика
     var plot_conf = {
         series: {
             lines: {
@@ -49,6 +54,7 @@ var Plot = function() {
         }
 
     };
-    // выводим график
-    $.plot($("#placeholder"), dataset, plot_conf);
+
+    $.plot($("#graph1-canvas"), setData(0), plot_conf);
+    $.plot($("#graph2-canvas"), setData(1), plot_conf);
 };

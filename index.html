@@ -30,34 +30,71 @@
 <body>
 
 	<div class="left-panel">
+        <div id="tabs">
+            <ul>
+                <li><a href="#fragment-1">Объекты</a></li>
+                <li><a href="#fragment-2">Графики</a></li>
+              </ul>
+            <div class="tabs-content">
+                <div id="fragment-1">
+                    <div class="prop">
+                        <div class="panel-title">Объекты</div>
+                        <ul class="objects block-types">
+                            <li object="block">Блок</li>
+                            <li object="block">Эллипс</li>
+                            <li object="block">Наклонная плоскость</li>
+                            <li object="circle">Круг</li>
+                        </ul>
+                    </div>
 
-		<div class="prop">
-			<div class="panel-title">Объекты</div>
-			<ul class="objects block-types">
-				<li object="block">Блок</li>
-				<li object="block">Эллипс</li>
-				<li object="block">Наклонная плоскость</li>
-				<li object="circle">Круг</li>
-			</ul>
-		</div>
+                    <div class="prop">
+                        <div class="panel-title">Связи</div>
+                        <ul class="objects">
+                            <li class="show">Нить</li>
+                            <li>Стержень</li>
+                            <li>Пружина</li>
+                            <li>Ось</li>
+                        </ul>
+                    </div>
+                    <div class="prop">
+                        <div class="panel-title">Якоря</div>
+                        <ul class="objects">
+                            <li>Сила</li>
+                            <li>Момент силы</li>
+                            <li>Стоп-якорь</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="fragment-2">
+                    <div class="graph1">
+                        <p><noscript><strong style="color: red;">
+                            Для отображения данных необходимо включить JavaScript!
+                        </strong></noscript></p>
+                        <!-- тут будет выводится график -->
+                        <div id="graph1-canvas" class="plot-popup-content" style="width:200px;height:200px;"></div>
+                    </div>
+                    <div class="graph2">
+                        <p><noscript><strong style="color: red;">
+                            Для отображения данных необходимо включить JavaScript!
+                        </strong></noscript></p>
+                        <!-- тут будет выводится график -->
+                        <div id="graph2-canvas" class="plot-popup-content" style="width:200px;height:200px;"></div>
+                    </div>
+                    <div class="bottom-graphs">
+                        <label>Ось Y:</label>
+                        <select class="graph-measures" id="graph-select-function">
+                            <option value="">---</option>
+                        </select>
+                        <label>Ось X:</label>
+                        <select class="graph-measures" id="graph-select-argument">
+                            <option value="">---</option>
+                        </select>
+                        <button onclick="PlotForTwoObjects()">Построить</button>
+                    </div>
+                </div>
+            </div>
 
-		<div class="prop">
-			<div class="panel-title">Связи</div>
-			<ul class="objects">
-				<li class="show">Нить</li>
-				<li>Стержень</li>
-				<li>Пружина</li>
-				<li>Ось</li>
-			</ul>
-		</div>
-		<div class="prop">
-			<div class="panel-title">Якоря</div>
-			<ul class="objects">
-				<li>Сила</li>
-				<li>Момент силы</li>
-				<li>Стоп-якорь</li>
-			</ul>
-		</div>
+        </div>
 	</div>
 
 	<div class="top-panel">
@@ -80,13 +117,6 @@
 					<ul class="objects">
 						<li class="render-animation">Применить сцену</li>
 						<li class="clear-scene">Очистить сцену</li>
-					</ul>
-				</p>
-			</div>
-			<div class="prop">
-				<p>
-					<ul class="objects">
-						<li class="show-plot" onclick="PlotPopUpShow()">Построить график</li>
 					</ul>
 				</p>
 			</div>
@@ -204,21 +234,23 @@
 			<div class="bottom-controls-next"></div>
 		</div>
 	</div>
-<div class="plot-popup" id="plot-popup" >
-    <p><noscript><strong style="color: red;">
-    Для отображения данных необходимо включить JavaScript!
-          </strong></noscript></p>
-    <!-- тут будет выводится график -->
-    <div id="placeholder" class="plot-popup-content" style="width:600px;height:300px;"></div>
-    <div class="bottom-popup">
-        <select class="graph-measures" id="graph-select-function">
-            <option value="">---</option>
-        </select>(
-		<select class="graph-measures" id="graph-select-argument">
-            <option value="">---</option>
-        </select>)
-        <button onclick="Plot()">Построить</button>
-    </div>
-</div>
+<!--<div class="plot-popup" id="plot-popup" >-->
+    <!--<p><noscript><strong style="color: red;">-->
+    <!--Для отображения данных необходимо включить JavaScript!-->
+          <!--</strong></noscript></p>-->
+    <!--&lt;!&ndash; тут будет выводится график &ndash;&gt;-->
+    <!--<div id="placeholder" class="plot-popup-content" style="width:600px;height:300px;"></div>-->
+    <!--<div class="bottom-popup">-->
+        <!--<label>Ось Y:</label>-->
+        <!--<select class="graph-measures" id="graph-select-function">-->
+            <!--<option value="">-&#45;&#45;</option>-->
+        <!--</select>-->
+        <!--<label>Ось X:</label>-->
+		<!--<select class="graph-measures" id="graph-select-argument">-->
+            <!--<option value="">-&#45;&#45;</option>-->
+        <!--</select>-->
+        <!--<button onclick="Plot()">Построить</button>-->
+    <!--</div>-->
+<!--</div>-->
 </body>
 </html>
