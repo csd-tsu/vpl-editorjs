@@ -127,7 +127,7 @@ jQuery(document).ready(function($) {
     });
     $( ".left-panel" ).tabs({
         collapsible: true,
-        active: false
+        active: 0
     });
 
 });
