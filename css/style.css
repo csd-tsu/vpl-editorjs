@@ -84,7 +84,6 @@ html, body {
     border: 1px solid #fff;
 }
 .btn-func:hover {
-    background: #0ead9a;
     background: #1565C0;
     box-shadow: none;
 }
@@ -96,7 +95,10 @@ html, body {
     bottom: 64px;
     background: #eee;
     border-right: 1px solid rgba(0, 0, 0, 0.14);
+    float:left;
+    overflow-y: auto;
 }
+
 .right-panel {
     position: fixed;
     top: 0px;
@@ -281,7 +283,7 @@ max-width: 200px;
     font-size: 14px;
     height: 29px;
     padding: 5px; /* If you add too much padding here, the options won't show in IE */
-    width: 50px;
+    width: 47px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;

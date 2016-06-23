@@ -65,20 +65,12 @@
                     </div>
                 </div>
                 <div id="fragment-2">
-                    <div class="graph1">
+                    <!--<div class="graph1">
                         <p><noscript><strong style="color: red;">
                             Для отображения данных необходимо включить JavaScript!
                         </strong></noscript></p>
-                        <!-- тут будет выводится график -->
                         <div id="graph1-canvas" class="plot-popup-content" style="width:200px;height:200px;"></div>
-                    </div>
-                    <div class="graph2">
-                        <p><noscript><strong style="color: red;">
-                            Для отображения данных необходимо включить JavaScript!
-                        </strong></noscript></p>
-                        <!-- тут будет выводится график -->
-                        <div id="graph2-canvas" class="plot-popup-content" style="width:200px;height:200px;"></div>
-                    </div>
+                    </div>-->
                     <div class="bottom-graphs">
                         <label>Ось Y:</label>
                         <select class="graph-measures" id="graph-select-function">
@@ -88,7 +80,7 @@
                         <select class="graph-measures" id="graph-select-argument">
                             <option value="">---</option>
                         </select>
-                        <button onclick="PlotForTwoObjects()">Построить</button>
+                        <button onclick="Plot()">Построить график</button>
                     </div>
                 </div>
             </div>
@@ -125,6 +117,13 @@
 			<div class="prop-container-scene">
 				<div class="prop">
 					<div class="panel-title">Cвойства сцены:</div>
+					<div class="prop-item scene-mesh">
+						<label class="prop-title">
+							<span>Сетка</span>
+							<input type="checkbox" class="prop-input" readonly>
+						</label>
+						<div class="slider"></div>
+					</div>
 					<div class="prop-item scene-duration">
 						<label class="prop-title">
 							<span>Длительность:</span>

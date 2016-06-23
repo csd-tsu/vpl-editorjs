@@ -87,6 +87,7 @@ jQuery(document).ready(function($) {
 		entities = {};
         $('#graph1-canvas').empty();
         $('#graph2-canvas').empty();
+        counter = 0;
 	});
 
 	$(".bottom-controls-play").click(function(event) {
@@ -129,9 +130,6 @@ jQuery(document).ready(function($) {
         collapsible: true,
         active: 0
     });
-
 });
 
-function PlotPopUpShow(){
-	$("#plot-popup").dialog('open');
-}
+

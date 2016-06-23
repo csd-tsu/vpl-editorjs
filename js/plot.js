@@ -1,4 +1,5 @@
-var setData = function (entity_number) {
+var counter = 0;
+var setData = function () {
     var all_data = [{}];
     var function_measure = $("#graph-select-function").val();
     var argument_measure = $("#graph-select-argument").val();
@@ -25,19 +26,27 @@ var setData = function (entity_number) {
 
     return [
         {
-            label: "Шарик " + entity_number,
-            data: all_data[0]['data' + entity_number],
+            label: "Шарик1",
+            data: all_data[0]['data0'],
             yaxis: {ticks: []},
             xaxis: {ticks: []},
             color: "#FF0000",
             points: { symbol: "circle", fillColor: "#FF0000"},
             lines: { show: true }
-        }
+        }, {
+             label: "Шарик 2",
+             data: all_data[0]['data1'],
+             xaxis: {ticks: []},
+             yaxis: {ticks: []},
+             color: "#0062FF",
+             points: { symbol: "triangle", fillColor: "#0062FF" },
+             lines: {show:true}
+         }
     ];
 };
 
 
-var PlotForTwoObjects = function () {
+var Plot = function () {
    // свойства графика
     var plot_conf = {
         series: {
@@ -45,16 +54,18 @@ var PlotForTwoObjects = function () {
                 show: true,
                 lineWidth: 2
             }
-        },
-        zoom: {
-            interactive: true
-        },
-        pan: {
-            interactive: true
         }
-
     };
 
-    $.plot($("#graph1-canvas"), setData(0), plot_conf);
-    $.plot($("#graph2-canvas"), setData(1), plot_conf);
+    $(".bottom-graphs").append(
+        "<div class='graph" + (++counter) + "'><p><noscript><strong style='color: red;'> </strong></noscript></p>" +
+        "<div id='graph" + (counter) + "-canvas' class='plot-popup-content' style='width:200px; height:200px;'></div></div>"
+    );
+
+    var container_id = '#graph' + (counter) + "-canvas";
+    $.plot($(container_id), setData(0), plot_conf);
+
+    //$.plot($("#graph2-canvas"), setData(1), plot_conf);
 };
+
+
